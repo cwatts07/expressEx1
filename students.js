@@ -32,7 +32,7 @@ students.get('/:id',(req,res)=>{
     if(student){
         res.json(student);
     }else{
-        res.json('Not found');
+        res.sendStatus(404);
     }
 })
 // accept POST request at URI: /students
@@ -56,5 +56,8 @@ students.post("/", (req, res) => {
   students.delete("/", (req, res) => {
     res.json("Deleting a student..");
   });
-
+  students.post('/log',(req, res)=>{
+      console.log(req.headers);
+      res.send(req.body);
+  })
   module.exports = students;
